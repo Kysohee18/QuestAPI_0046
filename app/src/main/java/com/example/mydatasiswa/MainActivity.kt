@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.foundation.layout.consumeWindowInsets
 import com.example.mydatasiswa.navigasi.DataSiswaApp
+import com.example.mydatasiswa.ui.IzinJaringanLokal
 import com.example.mydatasiswa.ui.theme.MydatasiswaTheme
 
 class MainActivity : ComponentActivity() {
@@ -22,9 +23,11 @@ class MainActivity : ComponentActivity() {
         setContent {
             MydatasiswaTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    DataSiswaApp(
+                    IzinJaringanLokal(
                         modifier = Modifier.padding(innerPadding).consumeWindowInsets(innerPadding)
-                    )
+                    ) { modifier ->
+                        DataSiswaApp(modifier = modifier)
+                    }
                 }
             }
         }

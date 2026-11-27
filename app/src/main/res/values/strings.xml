@@ -25,4 +25,7 @@
     </string>
     <string name="menyimpan">Menyimpan…</string>
     <string name="simpan_gagal">Gagal menyimpan data siswa. Silakan coba lagi.</string>
+    <string name="izin_jaringan_lokal">Izinkan akses jaringan lokal agar aplikasi dapat terhubung ke Laragon.</string>
+    <string name="btn_izin_jaringan">Izinkan akses</string>
+    <string name="pengaturan_aplikasi">Buka pengaturan aplikasi</string>
 </resources>
