@@ -1,5 +1,6 @@
 package com.example.mydatasiswa.ui
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -40,6 +41,7 @@ fun EntrySiswaScreen(
     viewModel: EntryViewModel = viewModel(factory = PenyediaViewModel.Factory),
 ) {
     val coroutineScope = rememberCoroutineScope()
+    BackHandler(enabled = viewModel.uiStateSiswa.isSaving) {}
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
     Scaffold(
         modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
@@ -47,7 +49,7 @@ fun EntrySiswaScreen(
             SiswaTopAppBar(
                 title = stringResource(DestinasiEntry.titleRes),
                 canNavigateBack = true,
-                navigateUp = navigateBack,
+                navigateUp = { if (!viewModel.uiStateSiswa.isSaving) navigateBack() },
                 scrollBehavior = scrollBehavior,
             )
         },

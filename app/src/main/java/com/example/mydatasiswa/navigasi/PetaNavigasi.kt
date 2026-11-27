@@ -50,12 +50,14 @@ fun HostNavigasi(
                 viewModel = homeViewModel,
             )
         }
-        composable(DestinasiEntry.route) {
+        composable(DestinasiEntry.route) { entry ->
             EntrySiswaScreen(
                 navigateBack = { navController.popBackStack() },
                 onSaved = {
-                    navController.previousBackStackEntry?.savedStateHandle?.set(SISWA_DISIMPAN, true)
-                    navController.popBackStack()
+                    if (navController.currentBackStackEntry == entry) {
+                        navController.previousBackStackEntry?.savedStateHandle?.set(SISWA_DISIMPAN, true)
+                        navController.popBackStack()
+                    }
                 },
             )
         }
