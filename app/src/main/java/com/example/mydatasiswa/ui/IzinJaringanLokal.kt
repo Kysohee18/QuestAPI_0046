@@ -12,6 +12,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.compose.LifecycleEventEffect
 
 @Composable
 fun IzinJaringanLokal(
@@ -25,6 +27,10 @@ fun IzinJaringanLokal(
     }
     val launcher = rememberLauncherForActivityResult(ActivityResultContracts.RequestPermission()) {
         izinDiberikan = it
+    }
+
+    LifecycleEventEffect(Lifecycle.Event.ON_RESUME) {
+        izinDiberikan = context.checkSelfPermission(permission) == PackageManager.PERMISSION_GRANTED
     }
 
     LaunchedEffect(Unit) {
